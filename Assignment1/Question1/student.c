@@ -13,10 +13,44 @@
 //Output: nums1 = [1,2,2,3,5,6]
 //Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
 
-void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
-
- // TODO: implement
 
 
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
+{
+    // filter out bad input sized
+    if (nums1Size != m + n || nums2Size != n) 
+    {
+        return;
+    }
 
+    // last element in nums1 and nums2
+    int i = m - 1;
+    int j = n - 1;
+    int k = nums1Size - 1;
+
+    // whilst not at the ends
+    while (i >= 0 && j >= 0) 
+    {
+        // swap mirror like
+        if (nums1[i] > nums2[j]) 
+        {
+            nums1[k] = nums1[i];
+            i--;
+        }
+        // in the middle 
+        else
+        {
+            nums1[k] = nums2[j];
+            j--;
+        }
+        k--;
+    }
+
+    // copy remaining elements from nums2
+    while (j >= 0) 
+    {
+        nums1[k] = nums2[j];
+        j--;
+        k--;
+    }
 }

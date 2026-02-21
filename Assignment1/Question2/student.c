@@ -13,10 +13,27 @@
 //Input: nums = [2,2,1,1,1,2,2]
 //Output: 2
 
+int majorityElement(int* nums, int numsSize) 
+{
+    int majority = 0;
+    int index = 0;
 
-int majorityElement(int* nums, int numsSize) {
-     // TODO: implement
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (index == 0) 
+        {
+            majority = nums[i];
+            index = 1;
+        }
+        else if (nums[i] == majority)
+        {
+            index++;
+        }
+        else 
+        {
+            index--;
+        }
+    }
 
-
-
+    return majority;
 }
