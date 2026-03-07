@@ -12,7 +12,18 @@
 
 #include "Student.h"
 
-int middleNodeValue(struct ListNode *head) {
-    // TODO: implement
 
+int middleNodeValue(struct ListNode* head) 
+{
+    struct ListNode* slow = head;
+    struct ListNode* fast = head;
+
+    //simply keep advancing pointers until they "collide"
+    while (fast != NULL && fast->next != NULL) 
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow->val;
 }
