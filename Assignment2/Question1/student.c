@@ -24,10 +24,24 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
-struct TreeNode* bstSearch(struct TreeNode* root, int target) {
-    // TODO: implement
-    // Hint: Use the BST property to decide whether to go left or right.
-    (void)root;
-    (void)target;
+struct TreeNode* bstSearch(struct TreeNode* root, int target) 
+{
+    while (root != NULL) 
+    {
+        // found the root of the tree to be equal
+        if (target == root->val) 
+        {
+            return root;
+        }
+        // otherwise the sorting pattern must be used, and we move the root downwards, to the subtree. 
+        else if (target < root->val) 
+        {
+            root = root->left;
+        }
+        else 
+        {
+            root = root->right;
+        }
+    }
     return NULL;
 }
