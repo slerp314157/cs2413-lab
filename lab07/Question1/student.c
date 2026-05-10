@@ -28,15 +28,45 @@ Notes:
 - You may write a helper function such as swap(...) if you want.
 */
 
-void bubbleSort(int arr[], int size) {
-    // TODO: implement basic bubble sort
-    (void)arr;
-    (void)size;
+/* Helper function to swap two integers */
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-void bubbleSortOptimized(int arr[], int size) {
-    // TODO: implement optimized bubble sort with early stopping
-    (void)arr;
-    (void)size;
+/* Basic Bubble Sort */
+void bubbleSort(int arr[], int n) {
+    if (n <= 1) return;
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
 }
 
+/* Optimized Bubble Sort */
+void bubbleSortOptimized(int arr[], int n) {
+    if (n <= 1) return;
+
+    bool swapped;
+
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+                swapped = true;
+            }
+        }
+
+        /* If no swaps occurred, the array is already sorted */
+        if (!swapped) {
+            break;
+        }
+    }
+}
